@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -31,7 +30,7 @@ public class Book extends BaseEntity{
             joinColumns = @JoinColumn(name="book_id", referencedColumnName="id"),
             inverseJoinColumns = @JoinColumn(name="author_id", referencedColumnName = "id")
     )
-    private List<Author> authors = new ArrayList<>();
+    private List<Author> authors;
 
     @Enumerated(EnumType.STRING)
     @ElementCollection(targetClass = Genre.class)

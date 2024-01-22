@@ -15,6 +15,14 @@ import java.util.List;
 @Entity
 @Table(name = "reader", schema = "lib_rest")
 public class Reader extends BaseEntity{
+    @Column(name = "first_name", length = 32, nullable = false)
+    private String firstName;
+
+    @Column(name = "last_name", length = 32, nullable = false)
+    private String lastName;
+
+    @Column(name = "middle_name", length = 32, nullable = false)
+    private String middleName;
     @OneToMany(mappedBy = "reader")
     private List<Copy> copies;
 }

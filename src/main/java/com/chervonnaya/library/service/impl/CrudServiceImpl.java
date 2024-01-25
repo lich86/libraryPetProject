@@ -7,9 +7,7 @@ import com.chervonnaya.library.service.CrudService;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -80,14 +78,13 @@ public abstract class CrudServiceImpl<E extends BaseEntity, D extends BaseDTO, R
     }
 
     @Override
-    public Page<E> findAll(Integer pageNumber, Integer pageSize, String sortField, String sortDirection) {
-        Pageable pageable = findAllWithPagination(pageNumber, pageSize, sortField, sortDirection);
+    public Page<E> findAll(Pageable pageable) {
         Page<E> all = repository.findAll(pageable);
         log.info("Page " + this.genericType.getSimpleName() + " create");
         return all;
     }
 
-    public Pageable findAllWithPagination(final Integer pageNumber, final Integer pageSize,
+/*    public Pageable findAllWithPagination(final Integer pageNumber, final Integer pageSize,
                                           final String sortField, final String sortDirection) {
 
         PageRequest pageRequest;
@@ -97,7 +94,7 @@ public abstract class CrudServiceImpl<E extends BaseEntity, D extends BaseDTO, R
         log.info(this.genericType.getSimpleName() + " sort by: " + sortField +
                 " ,sort direction: " + sortDirection);
         return pageRequest;
-    }
+    }*/
 
     public List<E> findAll() {
         return repository.findAll();

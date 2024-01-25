@@ -12,9 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 public class BookMapperConfigurer implements BaseMapConfigurer {
+    private AuthorService authorService;
 
-    @Autowired
-    AuthorService authorService;
+    public void setAuthorService(@Autowired AuthorService authorService) {
+        this.authorService = authorService;
+    }
 
     public void configure(ModelMapper mapper) {
         Converter<List<Long>, List<Author>> converter = context -> {

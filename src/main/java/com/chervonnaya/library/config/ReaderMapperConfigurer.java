@@ -12,9 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 public class ReaderMapperConfigurer implements BaseMapConfigurer{
+    private CopyService copyService;
 
-    @Autowired
-    CopyService copyService;
+    public void setCopyService(@Autowired CopyService copyService) {
+        this.copyService = copyService;
+    }
 
     @Override
     public void configure(ModelMapper mapper) {

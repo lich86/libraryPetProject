@@ -4,6 +4,9 @@ import com.chervonnaya.library.dto.CopyDTO;
 import com.chervonnaya.library.model.Copy;
 import com.chervonnaya.library.model.Reader;
 import com.chervonnaya.library.service.ReaderService;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
@@ -13,8 +16,12 @@ import java.util.List;
 
 public class CopyMapperConfigurer implements BaseMapConfigurer{
 
-    @Autowired
-    ReaderService readerService;
+    private ReaderService readerService;
+
+    public void setReaderService(@Autowired ReaderService readerService) {
+        this.readerService = readerService;
+    }
+
     @Override
     public void configure(ModelMapper mapper) {
         Converter<Long, List<Reader>> converter = context -> {

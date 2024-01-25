@@ -18,7 +18,7 @@ public class Book extends BaseEntity{
     @Column(name = "title", length = 64, nullable = false)
     private String title;
 
-    @Column(name = "description", length = 255, nullable = false)
+    @Column(name = "description", length = 2000, nullable = false)
     private String description;
 
     @OneToMany

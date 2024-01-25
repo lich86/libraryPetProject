@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -22,9 +23,12 @@ public class Copy extends BaseEntity{
     LocalDateTime rentalDate;
     @Column(name = "return_date", columnDefinition = "datetime")
     LocalDateTime returnDate;
-    @ManyToOne
-    @JoinColumn(name = "reader_id", referencedColumnName="id")
-    Reader reader;
+    @ManyToMany
+    @JoinTable(name = "copy_reader",
+            joinColumns = @JoinColumn (name="copy_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name="reader_id", referencedColumnName="id")
+    )
+    List<Reader> readers;
 
 
 

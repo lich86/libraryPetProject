@@ -24,7 +24,7 @@ public class Author extends BaseEntity{
     @Column(name = "middle_name", length = 32, nullable = false)
     private String middleName;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "book_author",
             joinColumns = @JoinColumn (name="author_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name="book_id", referencedColumnName="id")

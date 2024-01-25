@@ -15,8 +15,8 @@ import java.util.List;
 @Entity
 @Table(name = "book", schema = "lib_rest")
 public class Book extends BaseEntity{
-    @Column(name = "name", length = 64, nullable = false)
-    private String name;
+    @Column(name = "title", length = 64, nullable = false)
+    private String title;
 
     @Column(name = "description", length = 255, nullable = false)
     private String description;

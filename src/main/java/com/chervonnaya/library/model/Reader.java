@@ -23,6 +23,9 @@ public class Reader extends BaseEntity{
 
     @Column(name = "middle_name", length = 32, nullable = false)
     private String middleName;
-    @OneToMany(mappedBy = "reader")
+    @JoinTable(name = "copy_reader",
+            joinColumns = @JoinColumn (name="reader_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name="copy_id", referencedColumnName="id")
+    )
     private List<Copy> copies;
 }

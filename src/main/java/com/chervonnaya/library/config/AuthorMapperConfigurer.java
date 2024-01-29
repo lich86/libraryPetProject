@@ -6,20 +6,20 @@ import com.chervonnaya.library.model.Book;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class AuthorMapperConfigurer implements BaseMapConfigurer{
     public void configure(ModelMapper mapper) {
         Converter<List<String>, List<Book>> converter = context -> {
-            List<Book> books;
-            books = context.getSource().stream()
+            List<Book> books = context.getSource().stream()
                     .map(title -> {
                         Book book = new Book();
                         book.setTitle(title);
                         return book;
-                    })
-                    .toList();
+                    }).toList();
 
             return books;
         };

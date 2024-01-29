@@ -1,5 +1,6 @@
 package com.chervonnaya.library.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,7 +19,7 @@ public class Book extends BaseEntity{
     @Column(name = "title", length = 64, nullable = false)
     private String title;
 
-    @Column(name = "description", length = 2000, nullable = false)
+    @Column(name = "description", length = 2000)
     private String description;
 
     @OneToMany
@@ -30,10 +31,11 @@ public class Book extends BaseEntity{
             joinColumns = @JoinColumn(name="book_id", referencedColumnName="id"),
             inverseJoinColumns = @JoinColumn(name="author_id", referencedColumnName = "id")
     )
+    @JsonIgnoreProperties("books")
     private List<Author> authors;
 
     @Enumerated(EnumType.STRING)
     @ElementCollection(targetClass = Genre.class)
-    @Column(name = "genres")
+    @Column(name = "genres", length = 32)
     private List<Genre> genres;
 }

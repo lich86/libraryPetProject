@@ -1,14 +1,20 @@
 package com.chervonnaya.library.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @MappedSuperclass
 public abstract class BaseEntity implements Serializable {
 
@@ -17,18 +23,10 @@ public abstract class BaseEntity implements Serializable {
     private Long id;
 
     @Column(name = "time_created")
+    @CreationTimestamp
     private LocalDateTime timeCreated;
 
     @Column(name = "time_updated")
+    @UpdateTimestamp
     private LocalDateTime timeUpdated;
-
-    @PrePersist
-    public void setTimeCreated() {
-        timeCreated = LocalDateTime.now();
-    }
-
-    @PreUpdate
-    public void setTimeUpdated() {
-        timeUpdated = LocalDateTime.now();
-    }
 }

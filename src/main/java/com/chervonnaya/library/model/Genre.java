@@ -16,5 +16,6 @@ public enum Genre {
     HISTORY,
     BUSINESS,
     TRAVEL,
-    COOKING
+    COOKING,
+    CLASSIC
 }

@@ -1,5 +1,6 @@
 package com.chervonnaya.library.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,5 +30,6 @@ public class Author extends BaseEntity{
             joinColumns = @JoinColumn (name="author_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name="book_id", referencedColumnName="id")
     )
+    @JsonIgnoreProperties("authors")
     private List<Book> books;
 }

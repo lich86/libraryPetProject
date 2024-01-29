@@ -44,7 +44,7 @@ public class AuthorController {
         return authorService.update(id, authorDTO);
     }
 
-    @RequestMapping(value = "{/id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteAuthor(@PathVariable(name = "id") Long id) {
         authorService.delete(id);
     }

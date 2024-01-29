@@ -3,6 +3,7 @@ package com.chervonnaya.library.controller;
 import com.chervonnaya.library.dto.CopyDTO;
 import com.chervonnaya.library.model.Copy;
 import com.chervonnaya.library.service.CopyService;
+import com.chervonnaya.library.service.ReaderCopyService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,13 +12,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/author")
+@RequestMapping("/api/copy")
 public class CopyController {
     private final CopyService copyService;
+    private final ReaderCopyService readerCopyService;
 
-
-    public CopyController(@Autowired CopyService copyService) {
+    @Autowired
+    public CopyController(CopyService copyService, ReaderCopyService readerCopyService) {
         this.copyService = copyService;
+        this.readerCopyService = readerCopyService;
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -46,5 +49,6 @@ public class CopyController {
     public void deleteCopy(@PathVariable(name = "id") Long id) {
         copyService.delete(id);
     }
+
 
 }

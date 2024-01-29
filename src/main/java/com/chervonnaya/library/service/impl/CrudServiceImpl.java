@@ -44,7 +44,7 @@ public abstract class CrudServiceImpl<E extends BaseEntity, D extends BaseDTO, R
             return entity;
         } catch (Exception ex) {
             log.error(this.genericType.getSimpleName() + " don't save");
-            throw new RuntimeException(); //TODO
+            throw new RuntimeException(ex.getMessage()); //TODO
         }
     }
 
@@ -83,18 +83,6 @@ public abstract class CrudServiceImpl<E extends BaseEntity, D extends BaseDTO, R
         log.info("Page " + this.genericType.getSimpleName() + " create");
         return all;
     }
-
-/*    public Pageable findAllWithPagination(final Integer pageNumber, final Integer pageSize,
-                                          final String sortField, final String sortDirection) {
-
-        PageRequest pageRequest;
-        Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ?
-                Sort.by(sortField).ascending() : Sort.by(sortField).descending();
-        pageRequest = PageRequest.of(pageNumber - 1, pageSize, sort);
-        log.info(this.genericType.getSimpleName() + " sort by: " + sortField +
-                " ,sort direction: " + sortDirection);
-        return pageRequest;
-    }*/
 
     public List<E> findAll() {
         return repository.findAll();

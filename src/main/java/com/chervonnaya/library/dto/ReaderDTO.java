@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -16,5 +18,5 @@ public class ReaderDTO extends BaseDTO{
     @Size(max = ValidationConst.MAX_LENGTH_NAME, message = "{lastName.size}")
     private String lastName;
     private String middleName;
-    private Long copyId;
+    private List<Long> copyIds;
 }

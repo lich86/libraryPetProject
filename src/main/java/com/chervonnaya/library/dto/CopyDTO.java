@@ -1,17 +1,18 @@
 package com.chervonnaya.library.dto;
 
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
 public class CopyDTO extends BaseDTO{
-    @NotBlank(message = "{copyPrice.notBlank}")
-    private BigDecimal price;
+    @NotNull(message = "{copyPrice.notNull}")
+    private Double price;
     private LocalDateTime rentalDate;
     private LocalDateTime returnDate;
-    private Long readerId;
+    private Long bookId;
+    private List<Long> readerIds;
 }

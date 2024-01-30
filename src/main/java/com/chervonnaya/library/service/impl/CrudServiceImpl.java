@@ -1,6 +1,8 @@
 package com.chervonnaya.library.service.impl;
 
 import com.chervonnaya.library.dto.BaseDTO;
+import com.chervonnaya.library.exception.EntityNotFoundException;
+import com.chervonnaya.library.exception.SaveEntityException;
 import com.chervonnaya.library.model.BaseEntity;
 import com.chervonnaya.library.repository.IRepository;
 import com.chervonnaya.library.service.CrudService;
@@ -33,7 +35,7 @@ public abstract class CrudServiceImpl<E extends BaseEntity, D extends BaseDTO, R
             return entity.get();
         }
         log.error(this.genericType.getSimpleName() + " don't get, id: " + id);
-        throw new RuntimeException(); //TODO
+        throw new EntityNotFoundException(this.genericType.getSimpleName());
     }
 
     @Override
@@ -44,7 +46,7 @@ public abstract class CrudServiceImpl<E extends BaseEntity, D extends BaseDTO, R
             return entity;
         } catch (Exception ex) {
             log.error(this.genericType.getSimpleName() + " don't save");
-            throw new RuntimeException(ex.getMessage()); //TODO
+            throw new SaveEntityException(this.genericType.getSimpleName());
         }
     }
 
@@ -57,14 +59,13 @@ public abstract class CrudServiceImpl<E extends BaseEntity, D extends BaseDTO, R
         } catch (Exception ex) {
             log.error(this.genericType.getSimpleName() + " don't delete, id: " + id
                     + " Error message: " + ex.getMessage());
-            throw new RuntimeException(); //TODO
         }
     }
 
     @Transactional
     @Override
     public E update(Long id, D d) {
-        repository.findById(id).orElseThrow(RuntimeException::new); //TODO
+        repository.findById(id).orElseThrow(() -> new EntityNotFoundException(this.genericType.getSimpleName()));
         try {
             d.setId(id);
             E entity = repository.save(mapper.map(d, genericType));
@@ -72,7 +73,7 @@ public abstract class CrudServiceImpl<E extends BaseEntity, D extends BaseDTO, R
             return entity;
         } catch (Exception ex) {
             log.error(this.genericType.getSimpleName() + " don't update, id: " + id);
-            throw new RuntimeException(); //TODO
+            throw new SaveEntityException(this.genericType.getSimpleName());
         }
 
     }

@@ -2,7 +2,9 @@ package com.chervonnaya.library.controller;
 
 import com.chervonnaya.library.dto.AuthorDTO;
 import com.chervonnaya.library.model.Author;
+import com.chervonnaya.library.model.Book;
 import com.chervonnaya.library.service.AuthorService;
+import com.chervonnaya.library.service.BookService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,10 +17,12 @@ import org.springframework.web.bind.annotation.*;
 public class AuthorController {
 
     private final AuthorService authorService;
+    private final BookService bookService;
 
     @Autowired
-    public AuthorController(AuthorService authorService) {
+    public AuthorController(AuthorService authorService, BookService bookService) {
         this.authorService = authorService;
+        this.bookService = bookService;
     }
 
 
@@ -49,5 +53,10 @@ public class AuthorController {
         authorService.delete(id);
     }
 
+    @RequestMapping(value = "/{id}/book", method = RequestMethod.GET)
+    public Page<Book> getAllByBooksAuthor(Pageable pageable,
+                               @PathVariable(name = "id") Long id) {
+        return bookService.getAllByAuthor(id, pageable);
+    }
 
 }

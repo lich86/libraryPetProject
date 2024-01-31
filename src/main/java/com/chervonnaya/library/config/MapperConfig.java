@@ -12,15 +12,13 @@ public class MapperConfig {
     private final BookMapperConfigurer bookMapperConfigurer;
     private final CopyMapperConfigurer copyMapperConfigurer;
     private final ReaderMapperConfigurer readerMapperConfigurer;
-    private final ReaderCopyMapperConfigurer readerCopyMapperConfigurer;
 
     @Autowired
-    public MapperConfig(AuthorMapperConfigurer authorMapperConfigurer, BookMapperConfigurer bookMapperConfigurer, CopyMapperConfigurer copyMapperConfigurer, ReaderMapperConfigurer readerMapperConfigurer, ReaderCopyMapperConfigurer readerCopyMapperConfigurer) {
+    public MapperConfig(AuthorMapperConfigurer authorMapperConfigurer, BookMapperConfigurer bookMapperConfigurer, CopyMapperConfigurer copyMapperConfigurer, ReaderMapperConfigurer readerMapperConfigurer) {
         this.authorMapperConfigurer = authorMapperConfigurer;
         this.bookMapperConfigurer = bookMapperConfigurer;
         this.copyMapperConfigurer = copyMapperConfigurer;
         this.readerMapperConfigurer = readerMapperConfigurer;
-        this.readerCopyMapperConfigurer = readerCopyMapperConfigurer;
     }
 
 
@@ -32,7 +30,6 @@ public class MapperConfig {
         bookMapperConfigurer.configure(modelMapper);
         copyMapperConfigurer.configure(modelMapper);
         readerMapperConfigurer.configure(modelMapper);
-        readerCopyMapperConfigurer.configure(modelMapper);
         return modelMapper;
     }
 }

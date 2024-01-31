@@ -17,17 +17,14 @@ public class CopyMapperConfigurer implements BaseMapConfigurer{
     @Override
     public void configure(ModelMapper mapper) {
         Converter<List<Long>, List<Reader>> readerConverter = context -> {
-            try {
-                List<Reader> readers = context.getSource().stream()
-                        .map(id -> {
-                            Reader reader = new Reader();
-                            reader.setId(id);
-                            return reader;
-                        }).toList();
-                return readers;
-            } catch (Exception ex) {
-                return null;
-            }
+            List<Reader> readers = context.getSource().stream()
+                    .map(id -> {
+                        Reader reader = new Reader();
+                        reader.setId(id);
+                        return reader;
+                    }).toList();
+            return readers;
+
         };
         Converter<Long, Book> bookConverter = context -> {
             Book book = new Book();

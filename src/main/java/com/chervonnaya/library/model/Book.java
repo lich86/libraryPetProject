@@ -24,6 +24,7 @@ public class Book extends BaseEntity{
 
     @OneToMany
     @JoinColumn(name = "book_id", referencedColumnName="id")
+    @JsonIgnoreProperties("book")
     private List<Copy> copies;
 
     @ManyToMany

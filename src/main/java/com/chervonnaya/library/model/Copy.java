@@ -32,6 +32,6 @@ public class Copy extends BaseEntity{
             inverseJoinColumns = @JoinColumn(name="reader_id", referencedColumnName="id")
     )
     @JsonIgnoreProperties("copies")
-    List<Reader> readers;
+    private List<Reader> readers;
 
 }

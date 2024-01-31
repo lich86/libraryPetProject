@@ -1,4 +1,4 @@
-package com.chervonnaya.library.config;
+package com.chervonnaya.library.config.configurers;
 
 import com.chervonnaya.library.dto.CopyDTO;
 import com.chervonnaya.library.model.Book;
@@ -28,7 +28,7 @@ public class CopyMapperConfigurer implements BaseMapConfigurer{
         };
         Converter<Long, Book> bookConverter = context -> {
             Book book = new Book();
-            book.setId(context.getSource().longValue());
+            book.setId(context.getSource());
             return book;
         };
 

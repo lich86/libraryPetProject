@@ -63,7 +63,7 @@ public class ReaderController {
 
     @RequestMapping(value = "/{id}/copy", method = RequestMethod.PATCH)
     public Reader editReaderCopies(@PathVariable(name = "id") Long id,
-                                   @Valid @RequestBody List<Long> readerIds){
+                                   @RequestBody List<Long> readerIds){
         return readerService.patch(id, readerIds);
     }
 }

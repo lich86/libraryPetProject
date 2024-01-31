@@ -4,14 +4,18 @@ import com.chervonnaya.library.dto.BookDTO;
 import com.chervonnaya.library.model.Book;
 import com.chervonnaya.library.service.BookService;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/book")
+@Slf4j
 public class BookController {
     private final BookService bookService;
 
@@ -44,5 +48,11 @@ public class BookController {
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteBook(@PathVariable(name = "id") Long id) {
         bookService.delete(id);
+    }
+
+    @RequestMapping(value = "/{id}/author", method = RequestMethod.PATCH)
+    public Book editBookAuthors(@PathVariable(name = "id") Long id,
+                                @RequestBody List<Long> authorIds) {
+        return bookService.patch(id, authorIds);
     }
 }

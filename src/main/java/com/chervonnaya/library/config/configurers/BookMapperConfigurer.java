@@ -1,4 +1,4 @@
-package com.chervonnaya.library.config;
+package com.chervonnaya.library.config.configurers;
 
 import com.chervonnaya.library.dto.BookDTO;
 import com.chervonnaya.library.model.Author;

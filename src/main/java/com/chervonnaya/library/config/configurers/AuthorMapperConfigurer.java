@@ -1,4 +1,4 @@
-package com.chervonnaya.library.config;
+package com.chervonnaya.library.config.configurers;
 
 import com.chervonnaya.library.dto.AuthorDTO;
 import com.chervonnaya.library.model.Author;
@@ -10,10 +10,15 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+import static java.util.Objects.isNull;
+
 @Component
 public class AuthorMapperConfigurer implements BaseMapConfigurer{
     public void configure(ModelMapper mapper) {
         Converter<List<String>, List<Book>> converter = context -> {
+            if(isNull(context.getSource())) {
+                return null;
+            }
             List<Book> books = context.getSource().stream()
                     .map(title -> {
                         Book book = new Book();

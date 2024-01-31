@@ -54,7 +54,7 @@ public class RestExceptionHandler {
     @ExceptionHandler(SaveEntityException.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     public ResponseEntity<Object> handleSaveEntityException(final SaveEntityException e){
-        ErrorResponse response = new ErrorResponse("The " + e.getEntityClass() + "wasn't save in database", HttpStatus.UNPROCESSABLE_ENTITY, now());
+        ErrorResponse response = new ErrorResponse("The " + e.getEntityClass() + " wasn't saved to database", HttpStatus.UNPROCESSABLE_ENTITY, now());
         return new ResponseEntity<>(response, HttpStatus.UNPROCESSABLE_ENTITY);
     }
 

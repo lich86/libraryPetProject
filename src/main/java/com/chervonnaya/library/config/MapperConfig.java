@@ -1,5 +1,9 @@
 package com.chervonnaya.library.config;
 
+import com.chervonnaya.library.config.configurers.AuthorMapperConfigurer;
+import com.chervonnaya.library.config.configurers.BookMapperConfigurer;
+import com.chervonnaya.library.config.configurers.CopyMapperConfigurer;
+import com.chervonnaya.library.config.configurers.ReaderMapperConfigurer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

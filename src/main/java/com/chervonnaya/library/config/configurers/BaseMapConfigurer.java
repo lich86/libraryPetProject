@@ -1,4 +1,4 @@
-package com.chervonnaya.library.config;
+package com.chervonnaya.library.config.configurers;
 
 import org.modelmapper.ModelMapper;
 

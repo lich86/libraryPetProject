@@ -46,7 +46,8 @@ public abstract class CrudServiceImpl<E extends BaseEntity, D extends BaseDTO, R
             return entity;
         } catch (Exception ex) {
             log.error(this.genericType.getSimpleName() + " don't save");
-            throw new SaveEntityException(this.genericType.getSimpleName());
+            //throw new SaveEntityException(this.genericType.getSimpleName());
+            throw new RuntimeException(ex);
         }
     }
 

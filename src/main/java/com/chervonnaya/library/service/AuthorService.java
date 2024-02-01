@@ -6,4 +6,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface AuthorService extends CrudService<Author, AuthorDTO> {
+    @Override
+    void delete(Long id);
 }

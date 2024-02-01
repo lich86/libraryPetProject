@@ -19,7 +19,8 @@ import java.util.List;
 public class BookController {
     private final BookService bookService;
 
-    public BookController(@Autowired BookService bookService) {
+    @Autowired
+    public BookController(BookService bookService) {
         this.bookService = bookService;
     }
 
@@ -50,9 +51,15 @@ public class BookController {
         bookService.delete(id);
     }
 
-    @RequestMapping(value = "/{id}/author", method = RequestMethod.PATCH)
+    @RequestMapping(value = "/{id}/edit-author", method = RequestMethod.PATCH)
     public Book editBookAuthors(@PathVariable(name = "id") Long id,
                                 @RequestBody List<Long> authorIds) {
         return bookService.patch(id, authorIds);
+    }
+
+    @RequestMapping(value = "/{id}/add-author", method = RequestMethod.PATCH)
+    public Book addBookAuthor(@PathVariable(name = "id") Long id,
+                                @RequestBody Long authorId) {
+        return bookService.patch(id, authorId);
     }
 }

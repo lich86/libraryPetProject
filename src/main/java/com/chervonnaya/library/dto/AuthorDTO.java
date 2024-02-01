@@ -18,6 +18,8 @@ public class AuthorDTO extends BaseDTO{
     private String lastName;
     @Size(max = ValidationConst.MAX_LENGTH_NAME, message = "{middleName.size}")
     private String middleName;
+    @Size(max = ValidationConst.MAX_LENGTH_PEN_NAME, message = "{penName.size}")
+    private String penName;
     @Size(max = ValidationConst.MAX_LENGTH_BOOK_TITLE)
     private List<String> bookTitles;
 

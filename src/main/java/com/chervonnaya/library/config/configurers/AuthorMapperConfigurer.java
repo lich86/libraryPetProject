@@ -8,23 +8,26 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 import org.springframework.stereotype.Component;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
 
 @Component
 public class AuthorMapperConfigurer implements BaseMapConfigurer{
     public void configure(ModelMapper mapper) {
-        Converter<List<String>, List<Book>> converter = context -> {
+        Converter<List<String>, Set<Book>> converter = context -> {
             if(isNull(context.getSource())) {
                 return null;
             }
-            List<Book> books = context.getSource().stream()
+            Set<Book> books = context.getSource().stream()
                     .map(title -> {
                         Book book = new Book();
-                        book.setTitle(title);
+                        book.setOriginalTitle(title);
                         return book;
-                    }).toList();
+                    }).collect(Collectors.toCollection(HashSet::new));
 
             return books;
         };

@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CopyRepository extends IRepository<Copy>{
-    @Query("SELECT c.id, c.book.title, c.rentalDate, c.returnDate FROM Copy c JOIN c.readers r WHERE r.id = :readerId")
+    @Query("SELECT c FROM Copy c JOIN c.readers r WHERE r.id = :readerId")
     Page<Copy> getAllByReader(@Param("readerId") long readerId, Pageable pageable);
 }

@@ -1,4 +1,4 @@
-package com.chervonnaya.library.model;
+package com.chervonnaya.library.model.enums;
 
 public enum Genre {
     FICTION,

@@ -10,11 +10,16 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+import static java.util.Objects.isNull;
+
 @Component
 public class ReaderMapperConfigurer implements BaseMapConfigurer{
     @Override
     public void configure(ModelMapper mapper) {
         Converter<List<Long>, List<Copy>> converter = context -> {
+            if(isNull(context.getSource())) {
+                return null;
+            }
             List<Copy> copies = context.getSource().stream()
                     .map(id -> {
                         Copy copy = new Copy();

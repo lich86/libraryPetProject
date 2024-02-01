@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -16,14 +16,17 @@ import java.util.List;
 @Entity
 @Table(name = "author", schema = "lib_rest")
 public class Author extends BaseEntity{
-    @Column(name = "first_name", length = 32, nullable = false)
+    @Column(name = "first_name", nullable = false, columnDefinition = "VARCHAR(32)")
     private String firstName;
 
-    @Column(name = "last_name", length = 32, nullable = false)
+    @Column(name = "last_name", nullable = false, columnDefinition = "VARCHAR(32)")
     private String lastName;
 
-    @Column(name = "middle_name", length = 32, nullable = false)
+    @Column(name = "middle_name", columnDefinition = "VARCHAR(32)")
     private String middleName;
+
+    @Column(name = "pen_name", columnDefinition = "VARCHAR(64)")
+    private String penName;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "book_author",
@@ -31,5 +34,5 @@ public class Author extends BaseEntity{
             inverseJoinColumns = @JoinColumn(name="book_id", referencedColumnName="id")
     )
     @JsonIgnoreProperties("authors")
-    private List<Book> books;
+    private Set<Book> books;
 }

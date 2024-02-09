@@ -3,7 +3,6 @@ package com.chervonnaya.library.config;
 import com.chervonnaya.library.config.configurers.AuthorMapperConfigurer;
 import com.chervonnaya.library.config.configurers.BookMapperConfigurer;
 import com.chervonnaya.library.config.configurers.CopyMapperConfigurer;
-import com.chervonnaya.library.config.configurers.ReaderMapperConfigurer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,14 +14,12 @@ public class MapperConfig {
     private final AuthorMapperConfigurer authorMapperConfigurer;
     private final BookMapperConfigurer bookMapperConfigurer;
     private final CopyMapperConfigurer copyMapperConfigurer;
-    private final ReaderMapperConfigurer readerMapperConfigurer;
 
     @Autowired
-    public MapperConfig(AuthorMapperConfigurer authorMapperConfigurer, BookMapperConfigurer bookMapperConfigurer, CopyMapperConfigurer copyMapperConfigurer, ReaderMapperConfigurer readerMapperConfigurer) {
+    public MapperConfig(AuthorMapperConfigurer authorMapperConfigurer, BookMapperConfigurer bookMapperConfigurer, CopyMapperConfigurer copyMapperConfigurer) {
         this.authorMapperConfigurer = authorMapperConfigurer;
         this.bookMapperConfigurer = bookMapperConfigurer;
         this.copyMapperConfigurer = copyMapperConfigurer;
-        this.readerMapperConfigurer = readerMapperConfigurer;
     }
 
 
@@ -33,7 +30,6 @@ public class MapperConfig {
         authorMapperConfigurer.configure(modelMapper);
         bookMapperConfigurer.configure(modelMapper);
         copyMapperConfigurer.configure(modelMapper);
-        readerMapperConfigurer.configure(modelMapper);
         return modelMapper;
     }
 }

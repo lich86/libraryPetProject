@@ -4,12 +4,12 @@ import com.chervonnaya.library.config.constants.ValidationConst;
 import com.chervonnaya.library.model.enums.Language;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
-import java.time.LocalDateTime;
 import java.time.Year;
-import java.util.List;
+
 
 @Getter
 @Setter
@@ -20,10 +20,9 @@ public class CopyDTO extends BaseDTO{
     private Language language;
     @NotNull(message = "{copyPrice.notNull}")
     private Double price;
-    private LocalDateTime rentalDate;
-    private LocalDateTime returnDate;
     private String publishingHouse;
+    @PastOrPresent
     private Year publishingYear;
+    private String translator;
     private Long bookId;
-    private List<Long> readerIds;
 }

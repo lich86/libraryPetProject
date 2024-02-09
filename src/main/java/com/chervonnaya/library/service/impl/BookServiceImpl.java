@@ -58,10 +58,8 @@ public class BookServiceImpl extends CrudServiceImpl<Book, BookDTO, BookReposito
         try {
             Book book = this.getById(id);
             Set<Author> authors = book.getAuthors();
-            log.debug("before adding: " + authors.stream().toString());
             Author author = authorService.getById(authorId);
             authors.add(author);
-            log.debug("after adding: " + authors.stream().toString());
             book.setAuthors(authors);
             repository.save(book);
             log.info("Book update, id: " + id);

@@ -25,11 +25,8 @@ public class Reader extends BaseEntity{
     @Column(name = "middle_name", length = 32, nullable = false)
     private String middleName;
 
-    @ManyToMany
-    @JoinTable(name = "copy_reader",
-            joinColumns = @JoinColumn (name="reader_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name="copy_id", referencedColumnName="id")
-    )
-    @JsonIgnoreProperties("readers")
-    private List<Copy> copies;
+    @OneToMany(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "reader_id")
+    @JsonIgnoreProperties("reader")
+    private List<Rental> rentals;
 }

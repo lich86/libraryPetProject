@@ -22,7 +22,7 @@ public class Book extends BaseEntity{
     private String originalTitle;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "original_language")
+    @Column(name = "original_language", columnDefinition = "ENUM('ENGLISH', 'SPANISH', 'RUSSIAN')")
     private Language originalLanguage;
 
     @Column(name = "description", columnDefinition = "TEXT(2000)")

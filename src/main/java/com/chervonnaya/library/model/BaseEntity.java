@@ -22,7 +22,7 @@ public abstract class BaseEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "time_created")
+    @Column(name = "time_created", updatable = false)
     @CreationTimestamp
     private LocalDateTime timeCreated;
 

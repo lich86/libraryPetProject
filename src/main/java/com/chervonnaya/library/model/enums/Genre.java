@@ -3,6 +3,7 @@ package com.chervonnaya.library.model.enums;
 public enum Genre {
     FICTION,
     SCIENCE_FICTION,
+    MAGICAL_REALISM,
     ROMANCE,
     FANTASY,
     HORROR,
@@ -11,7 +12,7 @@ public enum Genre {
     BIOGRAPHY,
     SELF_HELP,
     POETRY,
-    CHILDRENS,
+    CHILDREN,
     SCIENCE,
     HISTORY,
     BUSINESS,

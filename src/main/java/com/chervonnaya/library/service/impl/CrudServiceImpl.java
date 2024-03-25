@@ -38,6 +38,7 @@ public abstract class CrudServiceImpl<E extends BaseEntity, D extends BaseDTO, R
         throw new EntityNotFoundException(this.genericType.getSimpleName());
     }
 
+    @Transactional
     @Override
     public E save(D d) {
         try {

@@ -1,10 +1,10 @@
-DELETE FROM `author`;
-DELETE FROM `book`;
 DELETE FROM `book_author`;
 DELETE FROM `book_genres`;
-DELETE FROM `copies`;
-DELETE FROM `reader`;
+DELETE FROM `author`;
 DELETE FROM `rental`;
+DELETE FROM `copies`;
+DELETE FROM `book`;
+DELETE FROM `reader`;
 DELETE FROM `users`;
 
 

@@ -15,7 +15,7 @@ import java.time.Year;
 @Setter
 public class CopyDTO extends BaseDTO{
     @NotBlank(message = "{copyTitle.notBlank}")
-    @Size(max = ValidationConst.MAX_LENGTH_BOOK_TITLE)
+    @Size(max = ValidationConst.MAX_LENGTH_BOOK_TITLE, message = "{bookTitle.size}")
     private String title;
     private Language language;
     @NotNull(message = "{copyPrice.notNull}")

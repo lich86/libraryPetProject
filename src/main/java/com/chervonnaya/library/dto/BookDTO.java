@@ -20,7 +20,7 @@ public class BookDTO extends BaseDTO{
     private String originalTitle;
     @NotNull(message = "{bookLanguage.notBlank}")
     private Language originalLanguage;
-    @Size(max = ValidationConst.MAX_LENGTH_BOOK_DESCRIPTION)
+    @Size(max = ValidationConst.MAX_LENGTH_BOOK_DESCRIPTION, message = "{description.size}")
     private String description;
     @NotEmpty(message = "{authors.notBlank}")
     private List<Long> authorIds;

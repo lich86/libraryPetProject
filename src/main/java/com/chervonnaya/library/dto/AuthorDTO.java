@@ -10,6 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class AuthorDTO extends BaseDTO{
     @NotBlank(message = "{firstName.notBlank}")
     @Size(max = ValidationConst.MAX_LENGTH_NAME, message = "{firstName.size}")

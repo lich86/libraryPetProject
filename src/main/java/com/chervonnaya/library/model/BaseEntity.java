@@ -1,5 +1,6 @@
 package com.chervonnaya.library.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,9 +25,11 @@ public abstract class BaseEntity implements Serializable {
 
     @Column(name = "time_created", updatable = false)
     @CreationTimestamp
+    @JsonIgnore
     private LocalDateTime timeCreated;
 
     @Column(name = "time_updated")
     @UpdateTimestamp
+    @JsonIgnore
     private LocalDateTime timeUpdated;
 }

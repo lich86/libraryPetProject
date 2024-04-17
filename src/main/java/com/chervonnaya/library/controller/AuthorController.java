@@ -54,7 +54,7 @@ public class AuthorController {
     }
 
     @RequestMapping(value = "/{id}/book", method = RequestMethod.GET)
-    public Page<Book> getAllByBooksAuthor(Pageable pageable,
+    public Page<Book> getAllBooksByAuthor(Pageable pageable,
                                @PathVariable(name = "id") Long id) {
         return bookService.getAllByAuthor(id, pageable);
     }
